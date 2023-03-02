@@ -1,14 +1,16 @@
 package com.grocerybud.backend;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table( name = "Item")
+@Table
 public class Item {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id", nullable = false, length = 25)
     private String id;
+
+    @Column(name = "name",  length = 250)
     private String name;
 
     public Item() {

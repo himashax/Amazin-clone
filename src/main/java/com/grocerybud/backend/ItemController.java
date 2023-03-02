@@ -1,12 +1,12 @@
 package com.grocerybud.backend;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/items")
 public class ItemController {
 
     @Autowired
@@ -17,10 +17,27 @@ public class ItemController {
         return "Hello there";
     }
 
-    @RequestMapping("/items")
-    public List<Item> getItems() {
+    @GetMapping("/")
+    public List<Item> groceryList() {
         return service.listProducts();
     }
+
+    @PostMapping("/add")
+    public String addGroceryItems(@RequestBody Item item) {
+        return service.saveItem(item);
+    }
+
+    @PutMapping("/{id}")
+    public String editGroceryItems(@PathVariable String id, @RequestBody Item item) {
+        return service.updateItem(id, item);
+    }
+
+    @DeleteMapping("/{id}")
+    public String removeGroceryItems(@PathVariable String id) {
+        return service.deleteItem(id);
+    }
+
+
 
 
 }
