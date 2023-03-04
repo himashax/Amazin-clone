@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "https://grocery-bud-60d83.web.app/")
 @RestController
 @RequestMapping("/items")
 public class ItemController {
@@ -37,6 +38,10 @@ public class ItemController {
         return service.deleteItem(id);
     }
 
+    @DeleteMapping("/delete")
+    public String removeAllGroceryItems() {
+        return service.deleteAllItems();
+    }
 
 
 

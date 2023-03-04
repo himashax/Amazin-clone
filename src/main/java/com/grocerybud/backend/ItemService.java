@@ -31,5 +31,10 @@ public class ItemService {
         return "danger";
     }
 
+    public String deleteAllItems() {
+        itemRepository.deleteAll();
+        return "danger";
+    }
+
 
 }
